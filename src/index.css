@@ -16,13 +16,12 @@ html {
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: auto;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.row {
-  max-width: 1140px;
-  margin: 0 auto;
+.header h1 {
+  padding-left: 30%;
 }
 
 .container {

@@ -1,13 +1,9 @@
-import axios from 'axios'
-
-axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="container">
-      <header>
-        
-      </header>
+      <Header />
     </div>
   );
 }
