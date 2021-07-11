@@ -5,23 +5,12 @@
 }
 
 html {
-  background-color: #fff;
-  color: rgb(56, 55, 55);
+  background-color: rgb(247, 246, 248);
+  color: rgb(22, 20, 20);
   font-family: "Arial", "sans-serif";
   font-size: 20px;
   font-weight: 300;
   text-rendering: optimizeLegibility;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  padding-left: 30%;
 }
 
 .container {
@@ -32,4 +21,14 @@ html {
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
+}
+
+.header {
+  display: flex;
+  font-size: 30px;
+  justify-content: space-between;
+  padding-left: 35%;
+  margin-bottom: 20px;
+  border: 1px solid rgb(247, 246, 248);
+  max-width: 100%;
 }
