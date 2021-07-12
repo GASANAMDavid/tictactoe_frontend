@@ -19,6 +19,6 @@ jobs:
           echo "Install dependencies"
           npm install
           echo "Deploy app to netlify"
-          npm run build
+          yarn build
           echo "Run tests"
           npm test
