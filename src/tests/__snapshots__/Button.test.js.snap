@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders correctly 1`] = `
+<div>
+  <button
+    className="btn-create"
+    onClick={[MockFunction]}
+    style={
+      Object {
+        "backgroundColor": "green",
+      }
+    }
+    type="button"
+  >
+    Test
+  </button>
+</div>
+`;
