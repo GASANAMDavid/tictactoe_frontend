@@ -11,11 +11,11 @@ describe("App", () => {
     expect(toJson(app)).toMatchSnapshot();
   });
 
-  xit("has a header", () => {
+  it("has a header", () => {
     expect(app.find(".header").exists()).toBe(true);
   });
 
-  xit("has a create game component", () => {
+  it("has a create game component", () => {
     expect(app.find("CreateGame").exists()).toBe(true);
   });
 });
