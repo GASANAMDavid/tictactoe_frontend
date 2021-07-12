@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react";
 import Select from "react-select";
 import Button from "./Button";
 import { Form } from "react-bootstrap";
@@ -20,12 +20,13 @@ const boardSizeOptions = [
 ];
 
 const CreateGame = ({ onSelectLanguage, onCreateGame }) => {
-  const [isLanguageSet, setIsLanguageSet] = React.useState(false);
-  const [language, setLanguage] = React.useState("");
-  const [playerName, setPlayerName] = React.useState("");
-  const [symbol, setSymbol] = React.useState("");
-  const [gameMode, setGameMode] = React.useState(1);
-  const [boardSize, setBoardSize] = React.useState();
+
+  const [isLanguageSet, setIsLanguageSet] = useState(false);
+  const [language, setLanguage] = useState("");
+  const [playerName, setPlayerName] = useState("");
+  const [symbol, setSymbol] = useState("");
+  const [gameMode, setGameMode] = useState(1);
+  const [boardSize, setBoardSize] = useState();
 
   const handleChange = (lang) => {
     setIsLanguageSet(true);
