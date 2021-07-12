@@ -21,4 +21,4 @@ jobs:
           echo "Deploy app to netlify"
           npm run build
           echo "Run tests"
-          npm test
+          npm test --watchAll
