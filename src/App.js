@@ -24,7 +24,6 @@ const App = () => {
       ) : (
         <>
           <h1> Play the game</h1>
-          <h2>Hi there</h2>
         </>
       )}{" "}
     </div>
