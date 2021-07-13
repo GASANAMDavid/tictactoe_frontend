@@ -10,8 +10,23 @@ exports[`App renders correctly 1`] = `
     Welcome to TicTacToe Game
   </h3>
   <CreateGame
+    gameInfo={
+      Object {
+        "boardSize": 3,
+        "gameMode": 1,
+        "language": null,
+        "playerName": "",
+        "symbol": "",
+      }
+    }
     onCreateGame={[Function]}
     onSelectLanguage={[Function]}
+    setGameInfo={[Function]}
+    translations={
+      Object {
+        "welcomeMessage": "Welcome to TicTacToe Game",
+      }
+    }
   />
 </div>
 `;
