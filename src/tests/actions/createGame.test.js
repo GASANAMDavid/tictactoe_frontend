@@ -9,7 +9,7 @@ describe("createGame", () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
-        status: 201,
+        status: 200,
         response: {
           id: 1,
           game_mode: 2,
@@ -37,7 +37,7 @@ describe("createGame", () => {
       moxios.wait(() => {
         const request = moxios.requests.mostRecent();
         request.respondWith({
-          status: 422,
+          status: 400,
           response: {
             errors: {
               symbol: ["can't be blank"],
