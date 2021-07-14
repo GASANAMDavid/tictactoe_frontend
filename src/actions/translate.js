@@ -2,9 +2,7 @@ import axios from "axios";
 
 export const getTranslations = (lang) => {
   return axios
-    .post("http://localhost:3000/games/1/translate", {
-      language: lang,
-    })
+    .get(`http://localhost:3000/translations/${lang}`)
     .then((response) => {
       return response.data;
     })
