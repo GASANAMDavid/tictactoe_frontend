@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateGame renders correctly 1`] = `
+<div
+  className="create-game"
+>
+  <Form
+    inline={false}
+  >
+    <FormRow>
+      <label>
+        Player name:
+        <input
+          className="input-player-name"
+          onChange={[Function]}
+          placeholder="Enter name"
+          value=""
+        />
+      </label>
+    </FormRow>
+    <FormRow>
+      <label>
+        Symbol:
+        <input
+          className="input-symbol"
+          onChange={[Function]}
+          placeholder="Enter player symbol"
+          value=""
+        />
+      </label>
+    </FormRow>
+    <FormRow>
+      <label>
+        Game mode:
+        <StateManager
+          className="select-game-mode"
+          defaultInputValue=""
+          defaultMenuIsOpen={false}
+          defaultValue={null}
+          onChange={[Function]}
+          options={
+            Array [
+              Object {
+                "label": "Human V Random Computer",
+                "value": 1,
+              },
+              Object {
+                "label": "Human V Intelligent Computer",
+                "value": 2,
+              },
+            ]
+          }
+          value={1}
+        />
+      </label>
+    </FormRow>
+    <FormRow>
+      <label>
+        BoardSize:
+        <StateManager
+          className="select-board-size"
+          defaultInputValue=""
+          defaultMenuIsOpen={false}
+          defaultValue={null}
+          isClearable={true}
+          onChange={[Function]}
+          options={
+            Array [
+              Object {
+                "label": 3,
+                "value": 3,
+              },
+              Object {
+                "label": 4,
+                "value": 4,
+              },
+              Object {
+                "label": 5,
+                "value": 5,
+              },
+            ]
+          }
+        />
+      </label>
+    </FormRow>
+    <Button
+      color="#2699ab"
+      onClick={[Function]}
+      text="Create game"
+    />
+  </Form>
+</div>
+`;

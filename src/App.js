@@ -1,12 +1,32 @@
-import React from 'react';
+import React from "react";
+import CreateGame from "./components/CreateGame";
 
-function App() {
-  const [header, setHeader] = React.useState('Welcome to TicTacToe Game')
+const App = () => {
+  const [heading, setHeading] = React.useState("Welcome to TicTacToe Game");
+  const [isLanguage, setIsLanguage] = React.useState(false);
+
+  const getSelectedLanguageContent = (lang) => {
+    setHeading("Welcome to TicTacToe Game in English");
+  };
+
+  const createGame = () => {
+    setIsLanguage(true);
+  };
+
   return (
     <div className='container'>
-      <h3 className='header'>{header}</h3>
+      <h3 className='header'>{heading}</h3>
+      {!isLanguage ? (
+        <CreateGame
+          onSelectLanguage={getSelectedLanguageContent}
+          onCreateGame={createGame}
+        />
+      ) : (
+        <>
+          <h1> Play the game</h1>
+        </>
+      )}
     </div>
   );
-}
-
+};
 export default App;
