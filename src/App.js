@@ -5,8 +5,8 @@ import { createGame } from "./actions/createGame";
 
 const App = () => {
   const [gameCreated, setGameCreated] = useState({
-    id: null
-  })
+    id: null,
+  });
 
   const [gameInfo, setGameInfo] = useState({
     playerName: "",
@@ -30,7 +30,7 @@ const App = () => {
     let id;
     let board;
     createGame(gameInfo).then((createdGame) => {
-      setGameCreated(({ id, board } = createdGame, { id, board }));
+      setGameCreated((({ id, board } = createdGame), { id, board }));
     });
   };
 
