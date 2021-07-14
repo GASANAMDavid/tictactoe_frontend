@@ -2,8 +2,8 @@ import { createGame } from "../../actions/createGame";
 import moxios from "moxios";
 
 describe("createGame", () => {
-  beforeEach(() => moxios.install);
-  afterEach(() => moxios.uninstall);
+  beforeEach(() => moxios.install());
+  afterEach(() => moxios.uninstall());
 
   it("creates a game and returns an object", () => {
     moxios.wait(() => {
