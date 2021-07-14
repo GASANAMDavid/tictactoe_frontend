@@ -19,7 +19,8 @@ describe("App", () => {
 
   // describe(".getSelectedLanguageContent", () => {
   //   it("get sets translations", () => {
-  //     expect(app.instance().getSelectedLanguageContent('en')).toHaveBeenCalled();
+  //     const instance = app.getInstance();
+  //     expect(instance.getSelectedLanguageContent('en')).toHaveBeenCalled();
   //   });
   // });
 });

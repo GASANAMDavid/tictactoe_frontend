@@ -30,7 +30,6 @@ const CreateGame = ({
 
   const handleChange = (lang) => {
     onSelectLanguage(lang);
-    // setGameInfo({ ...gameInfo, language: lang})
     setIsLanguageSet(true);
   };
 

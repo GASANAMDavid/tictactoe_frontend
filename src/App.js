@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import CreateGame from "./components/CreateGame";
 import { getTranslations } from "./actions/translate";
 import { createGame } from "./actions/createGame";
+import Board from "./components/Board"
 
 const App = () => {
   const [gameCreated, setGameCreated] = useState({
     id: null,
+    board: [['-'],['-']]
   });
 
   const [gameInfo, setGameInfo] = useState({
@@ -34,13 +36,17 @@ const App = () => {
     });
   };
 
+  const handleCellClick = (cellPosition) => {
+    console.log(cellPosition)
+  }
+
   return (
     <div className='container'>
       {gameCreated.id ? (
-        <>
+        <div>
           <h3 className='header'>{translations.playGameHeader}</h3>
-          <h1> Play the game</h1>
-        </>
+          <Board board={gameCreated.board} onCellClick = {handleCellClick}/>
+        </div>
       ) : (
         <div>
           <h3 className='header'>{translations.welcomeMessage}</h3>
