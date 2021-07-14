@@ -4,19 +4,25 @@ import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 import CreateGame from "../../components/CreateGame";
 
-// jest.mock("react", () => ({
-//   ...jest.requireActual("react"),
-//   useState: jest.fn(),
-// }));
-
 describe("CreateGame", () => {
   let createGame;
+  const mockTranslations = {};
   const mockGetSelectedLanguageContent = jest.fn();
+  const mockCreateGame = jest.fn();
+  const mockSetGameInfo = jest.fn();
+  const mockGameInfo = {};
+
   const lang = "en";
 
   beforeEach(() => {
     createGame = shallow(
-      <CreateGame onSelectLanguage={mockGetSelectedLanguageContent} />
+      <CreateGame
+        onSelectLanguage={mockGetSelectedLanguageContent}
+        translations={mockTranslations}
+        onCreateGame={mockCreateGame}
+        gameInfo={mockGameInfo}
+        setGameInfo={mockSetGameInfo}
+      />
     );
     createGame.find(".select-language").simulate("change", { value: lang });
   });
@@ -33,14 +39,6 @@ describe("CreateGame", () => {
 
   describe("when language is set", () => {
     it("should have input for player name", () => {
-      // const name = "Manzi";
-      // const mockSetPlayerName = jest.fn();
-      // React.useState = () => ["", mockSetPlayerName];
-      // createGame
-      //   .find(".input-player-name")
-      //   .simulate("change", { target: { value: name } });
-
-      // expect(mockSetPlayerName).toHaveBeenCalledWith(name); //
       expect(createGame.find(".input-player-name").exists()).toBe(true);
     });
 
@@ -52,16 +50,19 @@ describe("CreateGame", () => {
       expect(createGame.find(".select-game-mode").exists()).toBe(true);
     });
 
-    it('allows user to choose boardSize', () => {
-      expect(createGame.find('.select-board-size').exists()).toBe(true)
-    })
+    it("allows user to choose boardSize", () => {
+      expect(createGame.find(".select-board-size").exists()).toBe(true);
+    });
 
-    describe('submit button', () => {
-      it('has a Button component to create game', () => {
-        expect(createGame.find('Button').exists()).toBe(true)
-      })
-      
-    })
-    
+    describe("submit button", () => {
+      it("has a Button component to create game", () => {
+        expect(createGame.find("Button").exists()).toBe(true);
+      });
+
+      it("call onCreateGame when button clicked", () => {
+        createGame.find("Button").simulate("click");
+        expect(mockCreateGame).toHaveBeenCalled();
+      });
+    });
   });
 });
