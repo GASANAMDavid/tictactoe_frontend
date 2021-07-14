@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CreateGame from "./components/CreateGame";
 import { getTranslations } from "./actions/translate";
 import { createGame } from "./actions/createGame";
+import { applyMove } from "./actions/applyMove";
 import Board from "./components/Board"
 
 const App = () => {
@@ -37,7 +38,7 @@ const App = () => {
   };
 
   const handleCellClick = (cellPosition) => {
-    console.log(cellPosition)
+    applyMove(gameCreated.id, cellPosition)
   }
 
   return (
