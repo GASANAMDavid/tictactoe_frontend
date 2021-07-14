@@ -39,18 +39,27 @@ describe("CreateGame", () => {
 
   describe("when language is set", () => {
     it("should have input for player name", () => {
+      createGame.find('.input-player-name').simulate('change', { target: { value: 'David' } })
+      expect(mockSetGameInfo).toHaveBeenCalled()
       expect(createGame.find(".input-player-name").exists()).toBe(true);
     });
 
     it("should have input for symbol", () => {
+
+      createGame.find('.input-symbol').simulate('change', { target: { value: 'David' } })
+      expect(mockSetGameInfo).toHaveBeenCalled()
       expect(createGame.find(".input-symbol").exists()).toBe(true);
     });
 
     it("should allow user to choose game mode", () => {
+      createGame.find('.select-game-mode').simulate('change', { target: { value: 'David' } })
+      expect(mockSetGameInfo).toHaveBeenCalled()
       expect(createGame.find(".select-game-mode").exists()).toBe(true);
     });
 
     it("allows user to choose boardSize", () => {
+      createGame.find('.select-board-size').simulate('change', { target: { value: 'David' } })
+      expect(mockSetGameInfo).toHaveBeenCalled()
       expect(createGame.find(".select-board-size").exists()).toBe(true);
     });
 

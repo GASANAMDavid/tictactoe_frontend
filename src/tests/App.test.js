@@ -5,17 +5,21 @@ import App from "../App";
 
 describe("App", () => {
   let app;
-  beforeEach(() => (app = shallow(<App />)));
+  beforeEach(() => {
+    app = shallow(<App />);
+  });
 
   it("renders correctly", () => {
     expect(toJson(app)).toMatchSnapshot();
   });
 
-  it("has a header", () => {
-    expect(app.find(".header").exists()).toBe(true);
-  });
-
   it("has a create game component", () => {
     expect(app.find("CreateGame").exists()).toBe(true);
   });
+
+  // describe(".getSelectedLanguageContent", () => {
+  //   it("get sets translations", () => {
+  //     expect(app.instance().getSelectedLanguageContent('en')).toHaveBeenCalled();
+  //   });
+  // });
 });
