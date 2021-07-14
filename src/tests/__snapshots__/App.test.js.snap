@@ -4,31 +4,14 @@ exports[`App renders correctly 1`] = `
 <div
   className="container"
 >
-  <div>
-    <h3
-      className="header"
-    >
-      Welcome to TicTacToe Game
-    </h3>
-    <CreateGame
-      gameInfo={
-        Object {
-          "boardSize": 3,
-          "gameMode": 1,
-          "language": null,
-          "playerName": "",
-          "symbol": "",
-        }
-      }
-      onCreateGame={[Function]}
-      onSelectLanguage={[Function]}
-      setGameInfo={[Function]}
-      translations={
-        Object {
-          "welcomeMessage": "Welcome to TicTacToe Game",
-        }
-      }
-    />
-  </div>
+  <h3
+    className="header"
+  >
+    Welcome to TicTacToe Game
+  </h3>
+  <CreateGame
+    onCreateGame={[Function]}
+    onSelectLanguage={[Function]}
+  />
 </div>
 `;
