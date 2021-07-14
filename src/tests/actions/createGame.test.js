@@ -32,7 +32,7 @@ describe("createGame", () => {
   });
 
   describe("when missing params", () => {
-    it("returns :422 error when missing attributes", () => {
+    it("logs the error to the console", () => {
       console.log = jest.fn();
       moxios.wait(() => {
         const request = moxios.requests.mostRecent();
@@ -41,7 +41,7 @@ describe("createGame", () => {
           response: {
             errors: {
               symbol: ["can't be blank"],
-              board: ["can't be blank"]
+              board: ["can't be blank"],
             },
           },
         });
