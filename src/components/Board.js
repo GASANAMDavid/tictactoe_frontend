@@ -3,6 +3,7 @@ import Cell from "./Cell";
 
 function Board({ board, onCellClick }) {
   let cellIndex = 0;
+  
   const cellStyle = {
     width: `${100 / board.length}%`,
   };

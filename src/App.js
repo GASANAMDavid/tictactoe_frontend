@@ -38,7 +38,9 @@ const App = () => {
   };
 
   const handleCellClick = (cellPosition) => {
-    applyMove(gameCreated.id, cellPosition)
+    applyMove(gameCreated.id, cellPosition).then((response) => {
+      setGameCreated({ ...gameCreated, ...response})
+    })
   }
 
   return (
