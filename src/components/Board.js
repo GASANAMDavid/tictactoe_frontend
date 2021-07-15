@@ -1,25 +1,26 @@
 import React from "react";
 import Cell from "./Cell";
 
-function Board({ board, onCellClick }) {
+function Board({ board, onCellClick, onInvalidMove }) {
   let cellIndex = 0;
-  
-  const cellStyle = {
-    width: `${100 / board.length}%`,
+
+  const boardStyle = {
+    gridTemplateColumns: `repeat(${board.length}, 1fr)`,
   };
 
   return (
-    <div className='board'>
+    <div style={boardStyle} className='board'>
       {board.map((row) => {
         return row.map((col) => {
           cellIndex += 1;
           return (
             <Cell
+              cellState={col === '-'}
               key={cellIndex}
               cellPosition={cellIndex}
               onClick={onCellClick}
               cellSymbol={col}
-              cellStyle={cellStyle}
+              onInvalidMove={onInvalidMove}
             />
           );
         });

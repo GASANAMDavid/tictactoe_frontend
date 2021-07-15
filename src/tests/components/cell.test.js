@@ -4,9 +4,16 @@ import { shallow } from "enzyme";
 describe("Cell", () => {
   let cell;
   const cellIndex = 1;
+  const mockCellState = true;
   const mockonCellClick = jest.fn();
   beforeEach(() => {
-    cell = shallow(<Cell cellPosition={cellIndex} onClick={mockonCellClick} />);
+    cell = shallow(
+      <Cell
+        cellPosition={cellIndex}
+        cellState={mockCellState}
+        onClick={mockonCellClick}
+      />
+    );
   });
 
   it("renders correctly", () => {

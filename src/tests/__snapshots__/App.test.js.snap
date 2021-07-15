@@ -4,17 +4,19 @@ exports[`App renders correctly 1`] = `
 <div
   className="container"
 >
-  <div>
-    <h3
-      className="header"
-    >
-      Welcome to TicTacToe Game
-    </h3>
+  <div
+    className="header"
+  >
+    Welcome to TicTacToe Game
+  </div>
+  <div
+    className="content"
+  >
     <CreateGame
       gameInfo={
         Object {
-          "boardSize": 3,
-          "gameMode": 1,
+          "boardSize": null,
+          "gameMode": null,
           "language": null,
           "playerName": "",
           "symbol": "",
@@ -30,5 +32,31 @@ exports[`App renders correctly 1`] = `
       }
     />
   </div>
+  <div
+    className="game-info"
+  >
+    <h4>
+       Game Information 
+    </h4>
+    <div>
+      name:
+    </div>
+    <div>
+      Symbol:
+    </div>
+    <div>
+      game mode:
+    </div>
+    <div>
+      opponent:
+    </div>
+    <div>
+      opponent symbol:
+    </div>
+    <div />
+  </div>
+  <div
+    className="status"
+  />
 </div>
 `;

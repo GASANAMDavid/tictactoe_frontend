@@ -1,12 +1,17 @@
 import React from "react";
 
-const Cell = ({ cellPosition, onClick, cellSymbol, cellStyle }) => {
+const Cell = ({
+  cellPosition,
+  onClick,
+  cellSymbol,
+  cellState,
+  onInvalidMove
+}) => {
+  const handleCellClick = () => {
+    cellState ? onClick(cellPosition) : onInvalidMove();
+  };
   return (
-    <div
-      className='cell'
-      style={ cellStyle }
-      onClick={() => onClick(cellPosition)}
-    >
+    <div className='cell' onClick={() => handleCellClick(cellPosition)}>
       {cellSymbol}
     </div>
   );
