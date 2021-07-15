@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import CreateGame from "./components/CreateGame";
 import { getTranslations } from "./actions/translate";
+import { createGame } from "./actions/createGame";
 
 const App = () => {
-  const [isGameCreated, setIsGameCreated] = useState(false);
+  const [gameCreated, setGameCreated] = useState({
+    id: null,
+  });
+
   const [gameInfo, setGameInfo] = useState({
     playerName: "",
     symbol: "",
@@ -22,27 +26,32 @@ const App = () => {
     });
   };
 
-  const createGame = () => {
-    setGameInfo({ ...gameInfo, language: gameInfo.language });
-    setIsGameCreated(true);
-    console.log(gameInfo)
+  const handleCreateGame = () => {
+    let id;
+    let board;
+    createGame(gameInfo).then((createdGame) => {
+      setGameCreated((({ id, board } = createdGame), { id, board }));
+    });
   };
 
   return (
     <div className='container'>
-      <h3 className='header'>{translations.welcomeMessage}</h3>
-      {isGameCreated ? (
+      {gameCreated.id ? (
         <>
+          <h3 className='header'>{translations.playGameHeader}</h3>
           <h1> Play the game</h1>
         </>
       ) : (
-        <CreateGame
-          onSelectLanguage={getSelectedLanguageContent}
-          onCreateGame={createGame}
-          translations={translations}
-          gameInfo={gameInfo}
-          setGameInfo={setGameInfo}
-        />
+        <div>
+          <h3 className='header'>{translations.welcomeMessage}</h3>
+          <CreateGame
+            onSelectLanguage={getSelectedLanguageContent}
+            onCreateGame={handleCreateGame}
+            translations={translations}
+            gameInfo={gameInfo}
+            setGameInfo={setGameInfo}
+          />
+        </div>
       )}
     </div>
   );
