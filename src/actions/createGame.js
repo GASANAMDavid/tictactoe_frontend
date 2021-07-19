@@ -1,7 +1,10 @@
 import axios from "axios";
+import BASE_URL from '../environment'
+
 
 export const createGame = (parameters) => {
-  return axios.post("http://localhost:3000/games", {
+
+  return axios.post(`${BASE_URL}games`, {
     language: parameters['language'],
     player_name: parameters['playerName'],
     board_size: parameters['boardSize'],

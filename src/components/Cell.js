@@ -4,14 +4,14 @@ const Cell = ({
   cellPosition,
   onClick,
   cellSymbol,
-  cellState,
-  onInvalidMove
+  isOngoing,
+  onFinishedGame
 }) => {
   const handleCellClick = () => {
-    cellState ? onClick(cellPosition) : onInvalidMove();
+    isOngoing ? onClick(cellPosition) : onFinishedGame()
   };
   return (
-    <div className='cell' onClick={() => handleCellClick(cellPosition)}>
+    <div className='cell' onClick={handleCellClick}>
       {cellSymbol}
     </div>
   );

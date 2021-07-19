@@ -1,8 +1,9 @@
 import axios from "axios";
+import BASE_URL from '../environment'
 
 export const getTranslations = (lang) => {
   return axios
-    .get(`http://localhost:3000/translations/${lang}`)
+    .get(`${BASE_URL}translations/${lang}`)
     .then((response) => {
       return response.data;
     })

@@ -29,6 +29,7 @@ const CreateGame = ({
   const [isLanguageSet, setIsLanguageSet] = useState(false);
 
   const handleChange = (lang) => {
+    setGameInfo({ ...gameInfo, language: lang });
     onSelectLanguage(lang);
     setIsLanguageSet(true);
   };
@@ -69,10 +70,10 @@ const CreateGame = ({
               className='select-game-mode'
               placeholder={translations.select}
               options={modeOptions}
+              value={modeOptions.find(option => option.value === gameInfo.gameMode)}
               onChange={(event) =>
                 setGameInfo({ ...gameInfo, gameMode: event.value })
               }
-              value={gameInfo.gameMode}
             />
           </Form.Row>
           <Form.Row>
@@ -84,7 +85,7 @@ const CreateGame = ({
               onChange={(event) =>
                 setGameInfo({ ...gameInfo, boardSize: event.value })
               }
-              value={gameInfo.boardSize}
+              value={boardSizeOptions.find(option => option.value === gameInfo.boardSize)}
             />
           </Form.Row>
           <Button
@@ -99,9 +100,8 @@ const CreateGame = ({
           <Select
             className='select-language'
             options={languageOptions}
-            value={gameInfo.language}
+            value={languageOptions.find(option => option.value === gameInfo.language)}
             onChange={(event) => {
-              setGameInfo({ ...gameInfo, language: event.value });
               handleChange(event.value);
             }}
           />

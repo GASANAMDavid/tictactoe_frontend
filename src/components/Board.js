@@ -1,8 +1,9 @@
 import React from "react";
 import Cell from "./Cell";
 
-function Board({ board, onCellClick, onInvalidMove }) {
+function Board({ board, onCellClick, onInvalidMove, isOngoing, onFinishedGame }) {
   let cellIndex = 0;
+  const emptySymbol = '-'
 
   const boardStyle = {
     gridTemplateColumns: `repeat(${board.length}, 1fr)`,
@@ -15,12 +16,12 @@ function Board({ board, onCellClick, onInvalidMove }) {
           cellIndex += 1;
           return (
             <Cell
-              cellState={col === '-'}
               key={cellIndex}
               cellPosition={cellIndex}
-              onClick={onCellClick}
+              onClick={col === emptySymbol ? onCellClick : onInvalidMove}
               cellSymbol={col}
-              onInvalidMove={onInvalidMove}
+              isOngoing={isOngoing}
+              onFinishedGame={onFinishedGame}
             />
           );
         });

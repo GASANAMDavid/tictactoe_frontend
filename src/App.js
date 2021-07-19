@@ -6,11 +6,13 @@ import { applyMove } from "./actions/applyMove";
 import Board from "./components/Board";
 
 const App = () => {
-  let errorMessage = "";
   const [gameCreated, setGameCreated] = useState({
     id: null,
     board: [["-"], ["-"]],
-    state: ""
+    state: {
+      message: "",
+      ongoing: true,
+    },
   });
 
   const [gameInfo, setGameInfo] = useState({
@@ -24,7 +26,9 @@ const App = () => {
   const [translations, setTranslations] = useState({
     welcomeMessage: "Welcome to TicTacToe Game",
   });
-
+  
+  const [displayMessage, setDisplayMessage] = useState("");
+  
   const getSelectedLanguageContent = (lang) => {
     getTranslations(lang).then((data) => {
       setTranslations(data);
@@ -32,22 +36,28 @@ const App = () => {
   };
 
   const handleInvalidMove = () => {
-    errorMessage = "Invalid move";
+    setDisplayMessage(`${translations.invalidMove}`);
   };
+
 
   const handleCreateGame = () => {
     let id;
     let board;
     createGame(gameInfo).then((createdGame) => {
-      setGameCreated((({ id, board } = createdGame), { id, board }));
+      setGameCreated((({ id, board } = createdGame), {...gameCreated, id, board }));
     });
   };
 
   const handleCellClick = (cellPosition) => {
     applyMove(gameCreated.id, cellPosition).then((response) => {
       setGameCreated({ ...gameCreated, ...response });
+      setDisplayMessage(gameCreated.state.message)
     });
   };
+
+  const handleFinishedGame = () => {
+    setDisplayMessage(`${translations.finishedGame}. ${gameCreated.state.message}`)
+  }
 
   return (
     <div className='container'>
@@ -62,7 +72,8 @@ const App = () => {
             board={gameCreated.board}
             onCellClick={handleCellClick}
             onInvalidMove={handleInvalidMove}
-            isOngoing={gameCreated.ongoing}
+            isOngoing={gameCreated.state.ongoing}
+            onFinishedGame={handleFinishedGame}
           />
         ) : (
           <CreateGame
@@ -98,9 +109,7 @@ const App = () => {
         </div>
         <div></div>
       </div>
-      <div className='status'>
-        { errorMessage ? errorMessage : gameCreated.state}
-      </div>
+      <div className='status'>{displayMessage}</div>
     </div>
   );
 };
