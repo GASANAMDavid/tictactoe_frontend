@@ -29,5 +29,13 @@ describe("Cell", () => {
       cell.find(".cell").simulate("click");
       expect(mockOnCellClick).toHaveBeenCalledWith(cellIndex);
     });
+
+    it("calls onFinishedGame when the game is finished", () => {
+      const anotherCell = shallow(
+        <Cell isOngoing={false} onFinishedGame={mockOnFinishedGame} />
+      );
+      anotherCell.find(".cell").simulate("click");
+      expect(mockOnFinishedGame).toHaveBeenCalled();
+    });
   });
 });
