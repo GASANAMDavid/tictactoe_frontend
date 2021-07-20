@@ -3,15 +3,19 @@ import { shallow } from "enzyme";
 
 describe("Cell", () => {
   let cell;
+  let isOngoing = true;
   const cellIndex = 1;
-  const mockCellState = true;
-  const mockonCellClick = jest.fn();
+
+  const mockOnFinishedGame = jest.fn();
+  const mockOnCellClick = jest.fn();
+
   beforeEach(() => {
     cell = shallow(
       <Cell
+        isOngoing={isOngoing}
         cellPosition={cellIndex}
-        cellState={mockCellState}
-        onClick={mockonCellClick}
+        onFinishedGame={mockOnFinishedGame}
+        onClick={mockOnCellClick}
       />
     );
   });
@@ -20,8 +24,10 @@ describe("Cell", () => {
     expect(cell).toMatchSnapshot();
   });
 
-  it("calls onCellClick function when user clicks on a cell", () => {
-    cell.find(".cell").simulate("click");
-    expect(mockonCellClick).toHaveBeenCalledWith(cellIndex);
+  describe("when a cell is clicked", () => {
+    it("calls onCellClick function when the game is ongoing", () => {
+      cell.find(".cell").simulate("click");
+      expect(mockOnCellClick).toHaveBeenCalledWith(cellIndex);
+    });
   });
 });

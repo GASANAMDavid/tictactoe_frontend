@@ -6,7 +6,7 @@ import CreateGame from "../../components/CreateGame";
 
 describe("CreateGame", () => {
   let createGame;
-  const mockTranslations = {};
+  const mockTranslations = { gameModes: [] };
   const mockGetSelectedLanguageContent = jest.fn();
   const mockCreateGame = jest.fn();
   const mockSetGameInfo = jest.fn();
@@ -38,6 +38,9 @@ describe("CreateGame", () => {
   });
 
   describe("when language is set", () => {
+    // beforeEach(() => {
+    //   mockTranslations.mockReturnValueOnce([{ value: 1, label: 'Human v Random'}])
+    // })
     it("should have input for player name", () => {
       createGame.find('.input-player-name').simulate('change', { target: { value: 'David' } })
       expect(mockSetGameInfo).toHaveBeenCalled()

@@ -1,7 +1,7 @@
 let BASE_URL = "http://localhost:3000/";
 
 if (process.env.REACT_APP_ENV === "development") {
-    BASE_URL = "http://localhost:3000"
+    BASE_URL = "http://localhost:3000/"
 }
 
 if (process.env.REACT_APP_ENV === "production") {

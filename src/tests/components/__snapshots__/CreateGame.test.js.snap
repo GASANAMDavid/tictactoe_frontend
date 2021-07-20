@@ -35,18 +35,7 @@ exports[`CreateGame renders correctly 1`] = `
         defaultMenuIsOpen={false}
         defaultValue={null}
         onChange={[Function]}
-        options={
-          Array [
-            Object {
-              "label": "Human V Random Computer",
-              "value": 1,
-            },
-            Object {
-              "label": "Human V Intelligent Computer",
-              "value": 2,
-            },
-          ]
-        }
+        options={Array []}
       />
     </FormRow>
     <FormRow>

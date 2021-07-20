@@ -19,12 +19,13 @@ const App = () => {
     playerName: "",
     symbol: "",
     boardSize: null,
-    gameMode: null,
+    gameMode: {},
     language: null,
   });
 
   const [translations, setTranslations] = useState({
     welcomeMessage: "Welcome to TicTacToe Game",
+    gameModes: []
   });
   
   const [displayMessage, setDisplayMessage] = useState("");
@@ -43,15 +44,15 @@ const App = () => {
   const handleCreateGame = () => {
     let id;
     let board;
-    createGame(gameInfo).then((createdGame) => {
+    createGame({...gameInfo, gameMode: gameInfo.gameMode.value}).then((createdGame) => {
       setGameCreated((({ id, board } = createdGame), {...gameCreated, id, board }));
     });
   };
 
   const handleCellClick = (cellPosition) => {
     applyMove(gameCreated.id, cellPosition).then((response) => {
+      setDisplayMessage(response.state.message)
       setGameCreated({ ...gameCreated, ...response });
-      setDisplayMessage(gameCreated.state.message)
     });
   };
 
@@ -97,7 +98,7 @@ const App = () => {
         </div>
         <div>
           game mode:
-          {gameInfo.gameMode}
+          {gameInfo.gameMode['label']}
         </div>
         <div>
           opponent:

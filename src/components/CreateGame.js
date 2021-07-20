@@ -2,15 +2,11 @@ import Select from "react-select";
 import Button from "./Button";
 import { Form } from "react-bootstrap";
 import { useState } from "react";
+// import PropTypes from "prop-types";
 
 const languageOptions = [
   { value: "en", label: "English" },
   { value: "fr", label: "French" },
-];
-
-const modeOptions = [
-  { value: 1, label: "Human V Random Computer" },
-  { value: 2, label: "Human V Intelligent Computer" },
 ];
 
 const boardSizeOptions = [
@@ -28,16 +24,15 @@ const CreateGame = ({
 }) => {
   const [isLanguageSet, setIsLanguageSet] = useState(false);
 
+  const modeOptions = translations['gameModes'].map((mode) => {
+    return { value: mode, label: mode.label }
+  })
+  
   const handleChange = (lang) => {
     setGameInfo({ ...gameInfo, language: lang });
     onSelectLanguage(lang);
     setIsLanguageSet(true);
   };
-
-  const handleClick = () => {
-    onCreateGame();
-  };
-
   return (
     <div className='create-game'>
       {isLanguageSet ? (
@@ -91,7 +86,7 @@ const CreateGame = ({
           <Button
             color='#2699ab'
             text={translations.newGame}
-            onClick={handleClick}
+            onClick={() => onCreateGame()}
           />
         </Form>
       ) : (
