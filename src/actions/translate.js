@@ -1,4 +1,5 @@
 import axios from "axios";
+import BASE_URL from '../environment'
 
 const BASE_URL=process.env.BASE_URL;
 
