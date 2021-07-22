@@ -16,10 +16,7 @@ const App = (props) => {
     language: null,
   });
 
-  const [translations, setTranslations] = useState({
-    welcomeMessage: "Welcome to TicTacToe Game",
-    gameModes: [],
-  });
+  const [translations, setTranslations] = useState(props.translations);
 
   const [displayMessage, setDisplayMessage] = useState("");
 
@@ -121,6 +118,11 @@ App.defaultProps = {
       message: "",
       ongoing: true,
     },
+  },
+
+  translations: {
+    welcomeMessage: "Welcome to TicTacToe Game",
+    playGameHeader: "Play Tic Tac Toe",
   },
 };
 export default App;

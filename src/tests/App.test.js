@@ -21,6 +21,10 @@ describe("App", () => {
     it("renders the 'CreateGame' component", () => {
       expect(app.find("CreateGame").exists()).toBe(true);
     });
+
+    it('sets the header message to "WelcomeMessage"', () => {
+      expect(app.find(".header").text()).toEqual("Welcome to TicTacToe Game");
+    });
   });
 
   describe("when the game is created", () => {
@@ -39,6 +43,10 @@ describe("App", () => {
 
     it("renders the 'Board' component", () => {
       expect(app.find("Board").exists()).toBe(true);
+    });
+
+    it('sets the header message to "playGameHeader"', () => {
+      expect(app.find(".header").text()).toEqual("Play Tic Tac Toe");
     });
   });
 });
