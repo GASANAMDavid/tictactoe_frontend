@@ -27,10 +27,6 @@ describe("CreateGame", () => {
     createGame.find(".select-language").simulate("change", { value: lang });
   });
 
-  it("renders correctly", () => {
-    expect(toJson(createGame)).toMatchSnapshot();
-  });
-
   describe("when language is not set", () => {
     it("calls onSelectLanguage with the selected_language", () => {
       expect(mockGetSelectedLanguageContent).toHaveBeenCalledWith(lang);

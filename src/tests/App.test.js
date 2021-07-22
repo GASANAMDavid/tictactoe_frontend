@@ -17,6 +17,7 @@ describe("App", () => {
     beforeEach(() => {
       app = shallow(<App gameCreated={mockDefaultGameState} />);
     });
+
     it("renders the 'CreateGame' component", () => {
       expect(app.find("CreateGame").exists()).toBe(true);
     });

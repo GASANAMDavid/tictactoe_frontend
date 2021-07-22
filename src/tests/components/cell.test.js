@@ -20,10 +20,6 @@ describe("Cell", () => {
     );
   });
 
-  it("renders correctly", () => {
-    expect(cell).toMatchSnapshot();
-  });
-
   describe("when a cell is clicked", () => {
     it("calls onCellClick function when the game is ongoing", () => {
       cell.find(".cell").simulate("click");

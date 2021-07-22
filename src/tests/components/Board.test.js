@@ -12,10 +12,6 @@ describe("Board", () => {
     board = shallow(<Board board={mockBoard} />);
   });
 
-  it("renders correctly", () => {
-    expect(board).toMatchSnapshot();
-  });
-
   it("renders the child component Cells correctly", () => {
     expect(board.find("Cell")).toHaveLength(
       mockBoard.length * mockBoard[0].length
