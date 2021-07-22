@@ -2,15 +2,11 @@ import Select from "react-select";
 import Button from "./Button";
 import { Form } from "react-bootstrap";
 import { useState } from "react";
+// import PropTypes from "prop-types";
 
 const languageOptions = [
   { value: "en", label: "English" },
   { value: "fr", label: "French" },
-];
-
-const modeOptions = [
-  { value: 1, label: "Human V Random Computer" },
-  { value: 2, label: "Human V Intelligent Computer" },
 ];
 
 const boardSizeOptions = [
@@ -28,16 +24,15 @@ const CreateGame = ({
 }) => {
   const [isLanguageSet, setIsLanguageSet] = useState(false);
 
+  const modeOptions = translations['gameModes'].map((mode) => {
+    return { value: mode, label: mode.label }
+  })
+  
   const handleChange = (lang) => {
+    setGameInfo({ ...gameInfo, language: lang });
     onSelectLanguage(lang);
-    // setGameInfo({ ...gameInfo, language: lang})
     setIsLanguageSet(true);
   };
-
-  const handleClick = () => {
-    onCreateGame();
-  };
-
   return (
     <div className='create-game'>
       {isLanguageSet ? (
@@ -70,10 +65,10 @@ const CreateGame = ({
               className='select-game-mode'
               placeholder={translations.select}
               options={modeOptions}
+              value={modeOptions.find(option => option.value === gameInfo.gameMode)}
               onChange={(event) =>
                 setGameInfo({ ...gameInfo, gameMode: event.value })
               }
-              value={gameInfo.gameMode}
             />
           </Form.Row>
           <Form.Row>
@@ -85,13 +80,13 @@ const CreateGame = ({
               onChange={(event) =>
                 setGameInfo({ ...gameInfo, boardSize: event.value })
               }
-              value={gameInfo.boardSize}
+              value={boardSizeOptions.find(option => option.value === gameInfo.boardSize)}
             />
           </Form.Row>
           <Button
             color='#2699ab'
             text={translations.newGame}
-            onClick={handleClick}
+            onClick={() => onCreateGame()}
           />
         </Form>
       ) : (
@@ -100,9 +95,8 @@ const CreateGame = ({
           <Select
             className='select-language'
             options={languageOptions}
-            value={gameInfo.language}
+            value={languageOptions.find(option => option.value === gameInfo.language)}
             onChange={(event) => {
-              setGameInfo({ ...gameInfo, language: event.value });
               handleChange(event.value);
             }}
           />

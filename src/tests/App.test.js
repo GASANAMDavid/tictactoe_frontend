@@ -1,25 +1,52 @@
 import React from "react";
 import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
 import App from "../App";
 
 describe("App", () => {
   let app;
-  beforeEach(() => {
-    app = shallow(<App />);
+  const mockDefaultGameState = {
+    id: null,
+    board: [["-"], ["-"]],
+    state: {
+      message: "",
+      ongoing: true,
+    },
+  };
+
+  describe("when game is not created yet", () => {
+    beforeEach(() => {
+      app = shallow(<App gameCreated={mockDefaultGameState} />);
+    });
+
+    it("renders the 'CreateGame' component", () => {
+      expect(app.find("CreateGame").exists()).toBe(true);
+    });
+
+    it('sets the header message to "WelcomeMessage"', () => {
+      expect(app.find(".header").text()).toEqual("Welcome to TicTacToe Game");
+    });
   });
 
-  it("renders correctly", () => {
-    expect(toJson(app)).toMatchSnapshot();
-  });
+  describe("when the game is created", () => {
+    const newCreatedGameState = {
+      id: 1,
+      board: [["-"], ["-"]],
+      state: {
+        message: "",
+        ongoing: true,
+      },
+    };
 
-  it("has a create game component", () => {
-    expect(app.find("CreateGame").exists()).toBe(true);
-  });
+    beforeEach(() => {
+      app = shallow(<App gameCreated={newCreatedGameState} />);
+    });
 
-  // describe(".getSelectedLanguageContent", () => {
-  //   it("get sets translations", () => {
-  //     expect(app.instance().getSelectedLanguageContent('en')).toHaveBeenCalled();
-  //   });
-  // });
+    it("renders the 'Board' component", () => {
+      expect(app.find("Board").exists()).toBe(true);
+    });
+
+    it('sets the header message to "playGameHeader"', () => {
+      expect(app.find(".header").text()).toEqual("Play Tic Tac Toe");
+    });
+  });
 });

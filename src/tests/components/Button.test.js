@@ -12,10 +12,6 @@ describe("Button", () => {
     );
   });
 
-  it("renders correctly", () => {
-      expect(toJson(button)).toMatchSnapshot()
-  })
-
   it("sets button text from props", () => {
     expect(button.find(".btn-create").text()).toEqual("Test");
   });

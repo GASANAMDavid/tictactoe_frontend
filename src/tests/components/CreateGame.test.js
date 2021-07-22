@@ -6,7 +6,7 @@ import CreateGame from "../../components/CreateGame";
 
 describe("CreateGame", () => {
   let createGame;
-  const mockTranslations = {};
+  const mockTranslations = { gameModes: [] };
   const mockGetSelectedLanguageContent = jest.fn();
   const mockCreateGame = jest.fn();
   const mockSetGameInfo = jest.fn();
@@ -25,10 +25,6 @@ describe("CreateGame", () => {
       />
     );
     createGame.find(".select-language").simulate("change", { value: lang });
-  });
-
-  it("renders correctly", () => {
-    expect(toJson(createGame)).toMatchSnapshot();
   });
 
   describe("when language is not set", () => {

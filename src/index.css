@@ -1,41 +1,72 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: auto;
+html {
+  height: 100%;
+  width: 100%;
 }
 
-html {
+body {
   background-color: rgb(247, 246, 248);
-  color: rgb(22, 20, 20);
-  font-family: "Arial", "sans-serif";
-  font-size: 20px;
   font-weight: 300;
-  text-rendering: optimizeLegibility;
+  font-family: "Arial", "sans-serif";
+  color: rgb(22, 20, 20);
+  font-size: 20px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 30px auto auto 15%;
 }
 
 .container {
+  display: grid;
+  grid-template-columns: 5fr auto;
+  grid-template-rows: 1fr auto 1fr;
+  position: absolute;
   max-width: 60%;
-  margin: 30px auto;
-  border: 1px solid steelblue;
+  margin: 30px;
+  border: 2px solid rgb(9, 18, 26);
   padding: 30px;
-  border-radius: 5px;
 }
 
 .header {
-  display: flex;
+  margin-bottom: 40px;
+  justify-self: center;
+  grid-column: 1 / -1;
   font-size: 30px;
-  justify-content: space-between;
-  padding-left: 15%;
-  margin-bottom: 20px;
-  max-width: 100%;
+}
+
+.content {
+  margin: auto 10% auto 10%;
+  grid-column: 1 / 2;
+}
+
+.game-info {
+  grid-column: 2 / -1;
+  border-left: 2px solid rgb(198, 203, 209);
+  border-bottom: 2px solid rgb(198, 203, 209);
+  border-right: 2px solid rgb(198, 203, 209);
+}
+
+.game-info h4 {
+  text-align: center;
+  border: 1px solid rgb(198, 203, 209);
+}
+
+.status {
+  grid-column: 1 / -1;
+  margin-right: 20%;
+  justify-self: center;
 }
 
 .create-game {
-  display: flex;
-  justify-content: space-between;
-  max-width: 20%;
-  margin-left: 20%;
+  margin: auto 10% auto 20%;
   padding-bottom: 10%;
+}
+
+.input-player-name {
+  min-width: 100%;
+}
+
+.input-symbol {
+  min-width: 100%;
 }
 
 .select-board-size {
@@ -47,6 +78,19 @@ html {
 }
 
 button {
-  margin-top: 30px;
+  margin-top: 40px;
   margin-left: 30%;
+}
+
+.board {
+  background-color: cadetblue;
+  display: grid;
+  grid-gap: 3px;
+  max-width: 100%;
+}
+
+.cell {
+  border: 3px solid rgb(22, 20, 20);
+  text-align: center;
+  background-color: darkseagreen;
 }
