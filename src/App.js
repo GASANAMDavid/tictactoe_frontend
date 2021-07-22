@@ -5,15 +5,8 @@ import { createGame } from "./actions/createGame";
 import { applyMove } from "./actions/applyMove";
 import Board from "./components/Board";
 
-const App = () => {
-  const [gameCreated, setGameCreated] = useState({
-    id: null,
-    board: [["-"], ["-"]],
-    state: {
-      message: "",
-      ongoing: true,
-    },
-  });
+const App = (props) => {
+  const [gameCreated, setGameCreated] = useState(props.gameCreated);
 
   const [gameInfo, setGameInfo] = useState({
     playerName: "",
@@ -25,11 +18,11 @@ const App = () => {
 
   const [translations, setTranslations] = useState({
     welcomeMessage: "Welcome to TicTacToe Game",
-    gameModes: []
+    gameModes: [],
   });
-  
+
   const [displayMessage, setDisplayMessage] = useState("");
-  
+
   const getSelectedLanguageContent = (lang) => {
     getTranslations(lang).then((data) => {
       setTranslations(data);
@@ -40,25 +33,30 @@ const App = () => {
     setDisplayMessage(`${translations.invalidMove}`);
   };
 
-
   const handleCreateGame = () => {
     let id;
     let board;
-    createGame({...gameInfo, gameMode: gameInfo.gameMode.value}).then((createdGame) => {
-      setGameCreated((({ id, board } = createdGame), {...gameCreated, id, board }));
-    });
+    createGame({ ...gameInfo, gameMode: gameInfo.gameMode.value }).then(
+      (createdGame) => {
+        setGameCreated(
+          (({ id, board } = createdGame), { ...gameCreated, id, board })
+        );
+      }
+    );
   };
 
   const handleCellClick = (cellPosition) => {
     applyMove(gameCreated.id, cellPosition).then((response) => {
-      setDisplayMessage(response.state.message)
+      setDisplayMessage(response.state.message);
       setGameCreated({ ...gameCreated, ...response });
     });
   };
 
   const handleFinishedGame = () => {
-    setDisplayMessage(`${translations.finishedGame}. ${gameCreated.state.message}`)
-  }
+    setDisplayMessage(
+      `${translations.finishedGame}. ${gameCreated.state.message}`
+    );
+  };
 
   return (
     <div className='container'>
@@ -98,7 +96,7 @@ const App = () => {
         </div>
         <div>
           game mode:
-          {gameInfo.gameMode['label']}
+          {gameInfo.gameMode.label}
         </div>
         <div>
           opponent:
@@ -113,5 +111,16 @@ const App = () => {
       <div className='status'>{displayMessage}</div>
     </div>
   );
+};
+
+App.defaultProps = {
+  gameCreated: {
+    id: null,
+    board: [["-"], ["-"]],
+    state: {
+      message: "",
+      ongoing: true,
+    },
+  },
 };
 export default App;

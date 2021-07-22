@@ -17,7 +17,7 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 5fr auto;
   grid-template-rows: 1fr auto 1fr;
   position: absolute;
   max-width: 60%;
@@ -52,6 +52,7 @@ body {
 
 .status {
   grid-column: 1 / -1;
+  margin-right: 20%;
   justify-self: center;
 }
 

@@ -38,9 +38,6 @@ describe("CreateGame", () => {
   });
 
   describe("when language is set", () => {
-    // beforeEach(() => {
-    //   mockTranslations.mockReturnValueOnce([{ value: 1, label: 'Human v Random'}])
-    // })
     it("should have input for player name", () => {
       createGame.find('.input-player-name').simulate('change', { target: { value: 'David' } })
       expect(mockSetGameInfo).toHaveBeenCalled()
