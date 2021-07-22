@@ -1,10 +1,8 @@
 import axios from "axios";
 
-const BASE_URL=process.env.BASE_URL;
-
 export const createGame = (parameters) => {
 
-  return axios.post(`${BASE_URL}games`, {
+  return axios.post(`${process.env.REACT_APP_BASE_URL}games`, {
     language: parameters['language'],
     player_name: parameters['playerName'],
     board_size: parameters['boardSize'],
