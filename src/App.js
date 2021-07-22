@@ -123,6 +123,7 @@ App.defaultProps = {
   translations: {
     welcomeMessage: "Welcome to TicTacToe Game",
     playGameHeader: "Play Tic Tac Toe",
+    gameModes: []
   },
 };
 export default App;
