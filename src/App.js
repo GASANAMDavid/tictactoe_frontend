@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import CreateGame from "./components/CreateGame";
 import { getTranslations } from "./actions/translate";
 import { createGame } from "./actions/createGame";
+import { resetBoard} from "./actions/resetBoard"
 import { applyMove } from "./actions/applyMove";
+import Button from "./components/Button";
 import Board from "./components/Board";
 
 const App = (props) => {
@@ -55,6 +57,13 @@ const App = (props) => {
     );
   };
 
+  const handleBoardReset = () => {
+    resetBoard(gameCreated.id).then((response) => {
+      setGameCreated({ ...gameCreated, board: response.board, state: { message: "", ongoing: true } });
+      setDisplayMessage("")
+    })
+  }
+
   return (
     <div className='container'>
       <div className='header'>
@@ -105,7 +114,14 @@ const App = (props) => {
         </div>
         <div></div>
       </div>
-      <div className='status'>{displayMessage}</div>
+      <div className='status'>
+        <h4>{displayMessage}</h4>
+      </div>
+
+      <div className='reset'>
+      { !gameCreated.state.ongoing && <Button text={translations.reset} bgColor='#0c172c' color='#34d058' onClick={handleBoardReset}/> 
+      }
+      </div>
     </div>
   );
 };
@@ -123,7 +139,8 @@ App.defaultProps = {
   translations: {
     welcomeMessage: "Welcome to TicTacToe Game",
     playGameHeader: "Play Tic Tac Toe",
-    gameModes: []
+    gameModes: [],
+    reset: ""
   },
 };
 export default App;

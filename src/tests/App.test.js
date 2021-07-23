@@ -10,6 +10,7 @@ describe("App", () => {
     state: {
       message: "",
       ongoing: true,
+      
     },
   };
 
@@ -33,7 +34,7 @@ describe("App", () => {
       board: [["-"], ["-"]],
       state: {
         message: "",
-        ongoing: true,
+        ongoing: false,
       },
     };
 
@@ -48,5 +49,15 @@ describe("App", () => {
     it('sets the header message to "playGameHeader"', () => {
       expect(app.find(".header").text()).toEqual("Play Tic Tac Toe");
     });
+
+    describe('when the game has finished', () => {
+      beforeEach(() => {
+        app = shallow(<App gameCreated={newCreatedGameState} />)
+      })
+      it('has a reset button', () => {
+        expect(app.find("Button").exists()).toBe(true);
+      })
+    })
+    
   });
 });
