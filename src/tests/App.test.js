@@ -50,7 +50,7 @@ describe("App", () => {
       expect(app.find(".header").text()).toEqual("Play Tic Tac Toe");
     });
 
-    describe('when the game has finished', () => {
+    describe('and the game has finished', () => {
       beforeEach(() => {
         app = shallow(<App gameCreated={newCreatedGameState} />)
       })

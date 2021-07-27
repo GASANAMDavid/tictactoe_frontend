@@ -91,7 +91,7 @@ const App = (props) => {
         )}
       </div>
       <div className='game-info'>
-        <h4> Game Information </h4>
+        <h4> {translations.gameSettingsHeader} </h4>
         <div>
           name:
           {gameInfo.playerName}
@@ -140,7 +140,8 @@ App.defaultProps = {
     welcomeMessage: "Welcome to TicTacToe Game",
     playGameHeader: "Play Tic Tac Toe",
     gameModes: [],
-    reset: ""
+    reset: "",
+    gameSettingsHeader: "Game Settings" 
   },
 };
 export default App;
