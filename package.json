@@ -12,6 +12,7 @@
     "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
+    "eslint": "^7.31.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
@@ -48,5 +49,12 @@
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
     "jest-cli": "^27.0.6",
     "moxios": "^0.4.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js, jsx}",
+      "!src/index.js",
+      "!src/reportWebVitals.js"
+    ]
   }
 }

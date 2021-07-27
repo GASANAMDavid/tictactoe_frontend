@@ -2,7 +2,6 @@ import Select from "react-select";
 import Button from "./Button";
 import { Form } from "react-bootstrap";
 import { useState } from "react";
-// import PropTypes from "prop-types";
 
 const languageOptions = [
   { value: "en", label: "English" },
@@ -84,7 +83,7 @@ const CreateGame = ({
             />
           </Form.Row>
           <Button
-            color='#2699ab'
+            bgColor='#2699ab'
             text={translations.newGame}
             onClick={() => onCreateGame()}
           />
