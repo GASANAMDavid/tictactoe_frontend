@@ -119,7 +119,7 @@ const App = (props) => {
       </div>
 
       <div className='reset'>
-      { !gameCreated.state.ongoing && <Button text={translations.reset} bgColor='#0c172c' color='#34d058' onClick={handleBoardReset}/> 
+      { !gameCreated.state.ongoing && <Button text={translations.reset} bgColor='rgb(89 228 164)' onClick={handleBoardReset}/> 
       }
       </div>
     </div>

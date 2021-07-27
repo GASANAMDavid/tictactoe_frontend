@@ -83,7 +83,7 @@ const CreateGame = ({
             />
           </Form.Row>
           <Button
-            color='#2699ab'
+            bgColor='#2699ab'
             text={translations.newGame}
             onClick={() => onCreateGame()}
           />

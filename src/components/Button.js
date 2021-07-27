@@ -1,11 +1,11 @@
 import React from "react";
 
-function Button({ bgColor, color, text, onClick }) {
+function Button({ bgColor, text, onClick }) {
   return (
     <div>
       <button type='button'
         onClick={onClick}
-        style={{ backgroundColor: bgColor, color: color}}
+        style={{ backgroundColor: bgColor}}
         className='btn'
       >
         {text}
@@ -16,7 +16,6 @@ function Button({ bgColor, color, text, onClick }) {
 }
 
 Button.defaultProps = {
-  color: '#000',
   text: "click me"
 }
 

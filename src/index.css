@@ -51,6 +51,7 @@ body {
 }
 
 .status {
+  margin-top: 2%;
   grid-column: 1 / 2;
   justify-self: center;
 }
